@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=6.0">
+
+    <link rel="stylesheet" href="css/style-padrao.css">
+    <link rel="stylesheet" href="css/calculadora.css">
+
+    <title>Calculadora</title>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>CALCULADORA</h1>
+    </header>
+
+
+    <main>
+        <section class="calc-container br bl bt bb">
+            <div class="display bb" id="resultado"></div>
+
+            <div class="btn-container">
+                <div>
+                    <div class="eraser line-nums">
+                        <span class="btn medium bg-nums bb br">C</span>
+                        <span class="btn small bg-nums bb br">←</span>
+                    </div>
+
+
+                    <div class="nums">
+                        <div class="line-nums">
+                            <span class="btn small bb bg-nums">7</span>
+                            <span class="btn small bb br bl bg-nums">8</span>
+                            <span class="btn small bb br bg-nums">9</span>
+                        </div>
+
+
+                        <div class="line-nums">
+                            <span class="btn small bb bg-nums">4</span>
+                            <span class="btn small br bg-nums bl bb">5</span>
+                            <span class="btn small bb bg-nums br">6</span>
+                        </div>
+
+                        <div class="line-nums">
+                            <span class="btn small bb bg-nums">1</span>
+                            <span class="btn small bg-nums bb br bl">2</span>
+                            <span class="btn small bg-nums bb br">3</span>
+                        </div>
+
+                        <span class="bg-nums line-nums btn big br">0</span>
+                    </div>
+                </div>
+
+
+                <div class="bg-opr tc">
+                    <div class="btn-opr">
+                        <span class="bg-opr small bb btn">+</span>
+                        <span class="bg-opr small bb btn">-</span>
+                        <span class="bg-opr small bb btn">x</span>
+                        <span class="bg-opr small bb btn">÷</span>
+                    </div>
+
+                    <div class="btn-igual">
+                        <span class="small igual btn-i">=</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/calculadora.js"></script>
+</body>
+
+</html>

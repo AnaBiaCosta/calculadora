@@ -1,0 +1,145 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    background: black;
+} 
+
+.oi{
+    color: white
+}
+
+h1{
+    font-size: 80px;
+    text-align: center;
+    color: white ;
+    text-shadow: 3px 3px 3px #F5C1C7;
+    margin-bottom: 3%
+}
+
+.btn-container{
+    display: flex;
+    box-sizing: border-box;
+}
+
+.display{
+    height: 100px;
+    line-height: 100px;
+    background: white ;
+    text-align: right;
+    padding-right: 5%;
+    display: block;
+}
+
+.line-nums{
+    display: flex;
+    justify-content: space-between
+}
+
+
+main{
+    display: flex;
+    justify-content: center
+}
+
+.bg-opr{
+    background: #E8707B;
+}
+
+.bg-nums{
+    background: #F5C1C7
+}
+
+.calc-container{
+    width: 348px;
+}
+
+.btn{
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+}
+
+.n-btn{
+        height: 100%;
+        text-align: center;
+        line-height: 80px;
+        cursor: pointer;
+}
+
+.small{
+    width: 84px
+}
+
+.medium{
+    width: 172px
+}
+
+.big{
+    width: 260px;
+    justify-content: center
+}
+
+.btn-opr{
+    display: flex;
+    flex-direction: column 
+}
+
+.btn-i{
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+}
+
+
+
+
+/* BORDAS */
+
+.br{
+    border-right: 4px solid white
+}
+
+.bl{
+    border-left: 4px solid white
+}
+
+.bb{
+    border-bottom: 4px solid white
+}
+
+.bt{
+    border-top: 4px solid white
+}
+
+
+.btn:hover{
+    background: rgba(245, 193, 199, 0.445)
+}
+
+.tc{
+    text-align: center
+}
+
+
+.nova:hover{
+    background: rgba(245, 193, 199, 0.445)
+}
+
+
+.btn-igual:hover{
+    background: rgba(245, 193, 199, 0.445)
+}
+
+
+
+
+
+/* 
+#FFE2DF
+#FFD6DC
+#F5C1C7
+#E8A0AB
+#E8707B 
+*/
