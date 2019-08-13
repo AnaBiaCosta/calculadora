@@ -21,7 +21,6 @@ function guardarNumeros() {
 
 
 
-
 // GUARDA O OPERADOR
 function guardarOperador(event) {
 
@@ -47,6 +46,7 @@ function guardar2() {
 
 // FAZ A CONTA
 function fazerConta() {
+    contar_pontos = 0
     guardar2()
 
     if (operador == '+') {
@@ -77,6 +77,7 @@ function apagar(){
 
     if(eraser == 'C'){
         resultado.innerText = ''
+        contar_pontos = 0
     }else{
         resultado.innerText = resultado.innerText.slice(0, -1)
     }
@@ -88,16 +89,14 @@ function apagar(){
 // FUNÇÃO DO PONTO
 function ponto(){
     contar_pontos++
-    ponto = '.'
-    resultado.innerHTML += ponto
+
+
+    if(event.target.innerText == '.' && resultado.innerText == ''){
+        resultado.innerHTML = '0'
+    } 
 
     
     if(contar_pontos > 1){
         resultado.innerText = 'Erro'
-    }
-
-    if(resultado.innerText == '.'){
-        resultado.innerHTML = '0.'
-        console.log('passou aqui')
     }
 }
