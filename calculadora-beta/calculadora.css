@@ -1,0 +1,43 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+section{
+    width: 150px;
+}
+
+.box-line{
+    display: flex;
+
+}
+
+.big{
+    width: 50%
+}
+
+.small{
+    width: 25%
+}
+
+.box-item{
+    text-align: center;
+    align-items: center;
+    background: black;
+    color: #FFE2DF;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+}
+
+.box-item:hover{
+    background: #FFE2DF;
+}
+
+
+/* 
+#FFE2DF
+#FFD6DC
+#F5C1C7
+#E8A0AB
+#E8707B 
+*/
