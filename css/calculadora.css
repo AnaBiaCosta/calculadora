@@ -67,9 +67,6 @@ main{
         cursor: pointer;
 }
 
-
-
-
 .small{
     width: 84px
 }
@@ -143,6 +140,15 @@ main{
 
 
 
+
+
+
+/* TESTE */
+.teste{
+    border: 2px solid #E8707B;
+    color: white;
+    width: 200px
+}
 
 
 /* 
