@@ -1,17 +1,28 @@
 var numClick = document.querySelector('.nums').addEventListener('click', guardarNumeros)
+let operacao = document.querySelector('.btn-opr').addEventListener('click', guardarOperador)
+let igual = document.querySelector('.igual').addEventListener('click', fazerConta)
+document.querySelector('.eraser').addEventListener('click', apagar)
+document.querySelector('.ponto').addEventListener('click', ponto)
 
+let contar_pontos = 0
 let v1
 let v2
 let operador
 
 
+
+
+
+// GUARDA O PRIMEIRO NÚMERO
 function guardarNumeros() {
     let clicado = event.target.innerText
     resultado.innerHTML += clicado
 }
 
 
-let operacao = document.querySelector('.btn-opr').addEventListener('click', guardarOperador)
+
+
+// GUARDA O OPERADOR
 function guardarOperador(event) {
 
     contar_pontos = 0
@@ -27,35 +38,27 @@ function guardarOperador(event) {
 
 
 
+// GUARDA O SEGUNDO VALOR
 function guardar2() {
     v2 = resultado.innerHTML
 }
 
 
 
-let igual = document.querySelector('.igual').addEventListener('click', fazerConta)
-
+// FAZ A CONTA
 function fazerConta() {
-
     guardar2()
-
 
     if (operador == '+') {
         conta = (Number(v1) + Number(v2))
         resultado.innerHTML = conta
-    }
-
-    else if (operador == '-') {
+    }else if (operador == '-') {
         conta = (Number(v1) - Number(v2))
         resultado.innerHTML = conta
-    }
-
-    else if (operador == 'x') {
+    }else if (operador == 'x') {
         conta = (Number(v1) * Number(v2))
         resultado.innerHTML = conta
-    }
-
-    else {
+    }else {
         conta = (Number(v1) / Number(v2))
         resultado.innerHTML = conta.toFixed(1)
 
@@ -67,42 +70,45 @@ function fazerConta() {
 
 
 
-document.querySelector('.eraser').addEventListener('click', apagar)
+// APAGA OS RESULTADOS
 function apagar(){
 
     let eraser = event.target.innerText
 
     if(eraser == 'C'){
         resultado.innerText = ''
-    }
-
-    else{
+    }else{
         resultado.innerText = resultado.innerText.slice(0, -1)
     }
 }
 
-let contar_pontos = 0
-let ponto_vazio 
 
-document.querySelector('.ponto').addEventListener('click', ponto)
+
+
+// FUNÇÃO DO PONTO
 function ponto(){
-
-    if(ponto == '..'){
-        resultado.innerText = 'eia'
-    }
-
-
-
     contar_pontos++
     ponto = '.'
     resultado.innerHTML += ponto
 
-
+    
     if(contar_pontos > 1){
         resultado.innerText = 'Erro'
     }
 
-    if(resultado.innerText == ' .'){
-        resultado.innerHTML = '0.'
-    }
+
+
+
+
+    // if(ponto == '..'){
+    //     resultado.innerText = 'eia'
+    // }
+
+    
+
+
+
+    // if(resultado.innerText == ' .'){
+    //     resultado.innerHTML = '0.'
+    // }
 }
