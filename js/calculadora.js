@@ -96,19 +96,8 @@ function ponto(){
         resultado.innerText = 'Erro'
     }
 
-
-
-
-
-    // if(ponto == '..'){
-    //     resultado.innerText = 'eia'
-    // }
-
-    
-
-
-
-    // if(resultado.innerText == ' .'){
-    //     resultado.innerHTML = '0.'
-    // }
+    if(resultado.innerText == '.'){
+        resultado.innerHTML = '0.'
+        console.log('passou aqui')
+    }
 }
