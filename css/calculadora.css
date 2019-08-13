@@ -67,6 +67,9 @@ main{
         cursor: pointer;
 }
 
+
+
+
 .small{
     width: 84px
 }
@@ -91,6 +94,12 @@ main{
     line-height: 80px;
     cursor: pointer;
 }
+
+.nums{
+    display: flex;
+    flex-wrap: wrap
+}
+
 
 
 

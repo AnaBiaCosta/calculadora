@@ -5,7 +5,6 @@ let v2
 let operador
 
 
-
 function guardarNumeros() {
     let clicado = event.target.innerText
     resultado.innerHTML += clicado
@@ -14,7 +13,8 @@ function guardarNumeros() {
 
 let operacao = document.querySelector('.btn-opr').addEventListener('click', guardarOperador)
 function guardarOperador(event) {
-console.log('oi')
+
+    contar_pontos = 0
     let display = document.querySelector('#resultado').innerText
     v1 = display
 
@@ -81,15 +81,28 @@ function apagar(){
     }
 }
 
+let contar_pontos = 0
+let ponto_vazio 
 
 document.querySelector('.ponto').addEventListener('click', ponto)
 function ponto(){
 
-    let ponto = event.target.innerText
-
-    if( resultado.innerText = ' .'){
-        resultado.innerText = '0'
+    if(ponto == '..'){
+        resultado.innerText = 'eia'
     }
 
 
+
+    contar_pontos++
+    ponto = '.'
+    resultado.innerHTML += ponto
+
+
+    if(contar_pontos > 1){
+        resultado.innerText = 'Erro'
+    }
+
+    if(resultado.innerText == ' .'){
+        resultado.innerHTML = '0.'
+    }
 }
