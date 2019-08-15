@@ -55,7 +55,7 @@ function fazerConta() {
         resultado.innerHTML = conta
     }
 
-    else if (operador == 'x') {
+    else if (operador == 'x' || operador == '*') {
         conta = (Number(v1) * Number(v2))
         resultado.innerHTML = conta
     }

@@ -21,17 +21,26 @@ function teclado() {
     let tecla = event.key
     let teclaNum = event.keyCode
 
-    if (teclaNum >= 48 && teclaNum <= 57) {
-        resultado.innerText += tecla
-    }else if (tecla == 'Delete' || tecla == 'Backspace' || tecla == 'Escape') {
+
+
+    if (teclaNum >= 48 && teclaNum <= 57 && teclaNum != 56) {
+
+        if (resultado.innerText.length < 14) {
+            resultado.innerText += tecla
+        }
+        else {
+            return
+        }
+
+    } else if (tecla == 'Delete' || tecla == 'Backspace' || tecla == 'Escape') {
         apagador = tecla
         apagar()
-    }else if (tecla == '=') {
+    } else if (tecla == '=') {
         fazerConta()
-    }else if (tecla == '.') {
+    } else if (tecla == '.') {
         pontoTeclado = tecla
         ponto()
-    }else if (tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
+    } else if (tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
         operadorTeclado = event.key
         guardarOperadorTeclado()
     }
@@ -55,7 +64,11 @@ function guardarNumeros() {
     let clicado = event.target.innerText
 
     if (clicado != '.') {
-        resultado.innerHTML += clicado
+        if (resultado.innerText.length < 14) {
+            resultado.innerHTML += clicado
+        } else {
+            return
+        }
     } else if (clicado == '.') {
         pontoClick = clicado
         ponto()
@@ -82,24 +95,21 @@ function guardar2() {
 // FAZ A CONTA
 function fazerConta() {
     contarPontos = 0
+    let conta = 0
+
+    
     guardar2()
 
     if (operador == '+') {
         conta = (Number(v1) + Number(v2))
-        resultado.innerHTML = conta
-    }
-
-    else if (operador == '-') {
+        resultado.innerHTML = `<marquee>${conta}</marquee>`
+    } else if (operador == '-') {
         conta = (Number(v1) - Number(v2))
         resultado.innerHTML = conta
-    }
-
-    else if (operador == 'x' || operador == '*') {
+    } else if (operador == 'x' || operador == '*') {
         conta = (Number(v1) * Number(v2))
         resultado.innerHTML = conta
-    }
-
-    else {
+    } else {
         conta = (Number(v1) / Number(v2))
         resultado.innerHTML = conta.toFixed(1)
 
@@ -107,6 +117,23 @@ function fazerConta() {
             resultado.innerHTML = 'Erro'
         }
     }
+
+    let contaString = String(conta)
+
+    console.log(contaString)
+
+
+    if (conta > 9007199254740991) {
+        resultado.innerHTML = 'Erro'
+    }
+
+    if (contaString.length > 14) {
+        console.log('cheguei')
+        resultado.innerHTML = `${contaString.slice(0, -10)}e+`
+    }
+
+
+
 }
 
 
