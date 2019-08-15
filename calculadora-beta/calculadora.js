@@ -41,9 +41,6 @@ function fazerConta() {
 
     guardar2()
 
-    console.log(`CHEGOU O V1 = ${v1}`)
-    console.log(`CHEGOU O V2 = ${v2}`)
-
     if (operador == '+') {
         conta = (Number(v1) + Number(v2))
         resultado.innerHTML = conta
