@@ -1,33 +1,56 @@
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image:url("../img/bg-dark.jpg");
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 40px;
-    background: black;
+    background-color: black;
+    color:white;
 } 
 
-.oi{
-    color: white
+
+header{
+    display:flex; 
+    justify-content:center;
+    flex-direction: column;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 
 h1{
     font-size: 80px;
     text-align: center;
     color: white ;
-    text-shadow: 3px 3px 3px #F5C1C7;
-    margin-bottom: 3%
+    text-shadow: 3px 3px 3px rgb(59, 59, 59);
+    margin-bottom: 3%;
+    width: 100%;
 }
+
+.sub-title{
+    color:white;
+    text-align: center;
+    font-size: 25px;
+    justify-content: center;
+}
+
+
+
 
 .btn-container{
     display: flex;
     box-sizing: border-box;
+    color:white;
 }
 
 .display{
     height: 100px;
     line-height: 100px;
-    background: white ;
+    background: black;
     text-align: right;
     padding-right: 5%;
     display: block;
+    border-radius: 20px;
+    border: 2px solid white;
+    margin-bottom: 10px
 }
 
 .line-nums{
@@ -42,15 +65,21 @@ main{
 }
 
 .bg-opr{
-    background: #E8707B;
+    background: black;
 }
 
 .bg-nums{
-    background: #F5C1C7
+    background: black
 }
 
 .calc-container{
     width: 348px;
+    border-radius: 20px;
+    border: 2px solid white;
+    padding: 20px;
+    background-color: black;
+    box-shadow: 10px 10px 10px rgb(15, 15, 15);
+
 }
 
 .btn{
@@ -58,7 +87,11 @@ main{
     text-align: center;
     line-height: 80px;
     cursor: pointer;
+    border-radius: 20px;
+    border: 2px solid white
 }
+
+
 
 .n-btn{
         height: 100%;
@@ -94,7 +127,7 @@ main{
 
 .nums{
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 
@@ -103,25 +136,25 @@ main{
 
 /* BORDAS */
 
-.br{
-    border-right: 4px solid white
+/* .br{
+    border-right: 4px solid white;
 }
 
 .bl{
-    border-left: 4px solid white
+    border-left: 4px solid white;
 }
 
 .bb{
-    border-bottom: 4px solid white
+    border-bottom: 4px solid white;
 }
 
 .bt{
-    border-top: 4px solid white
-}
+    border-top: 4px solid white;
+} */
 
 
 .btn:hover{
-    background: rgba(245, 193, 199, 0.445)
+    background: gray
 }
 
 .tc{
@@ -130,14 +163,18 @@ main{
 
 
 .nova:hover{
-    background: rgba(245, 193, 199, 0.445)
+    background: gray
 }
 
 
 .btn-igual:hover{
-    background: rgba(245, 193, 199, 0.445)
+    background: gray
 }
 
+.btn-igual{
+    border-radius: 20px;
+    border: 2px solid white
+}
 
 
 

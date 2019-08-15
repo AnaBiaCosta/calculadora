@@ -2,7 +2,6 @@ let numClick = document.querySelector('.nums').addEventListener('click', guardar
 let operacao = document.querySelector('.btn-opr').addEventListener('click', guardarOperador)
 let igual = document.querySelector('.igual').addEventListener('click', fazerConta)
 document.querySelector('.eraser').addEventListener('click', apagar)
-// document.querySelector('.ponto').addEventListener('click', ponto)
 document.addEventListener('keydown', teclado)
 
 
@@ -11,13 +10,10 @@ let contarPontos = 0
 let v1
 let v2
 let operador
-let apagador = ''
 let operadorTeclado
+let apagador = ''
 let pontoTeclado
 let pontoClick
-
-
-
 
 
 // PEGAR OS VALORES DO TECLADO
@@ -27,30 +23,22 @@ function teclado() {
 
     if (teclaNum >= 48 && teclaNum <= 57) {
         resultado.innerText += tecla
-    }
-
-    else if (tecla == 'Delete' || tecla == 'Backspace' || tecla == 'Escape') {
+    }else if (tecla == 'Delete' || tecla == 'Backspace' || tecla == 'Escape') {
         apagador = tecla
         apagar()
-    }
-
-    else if (tecla == '=') {
+    }else if (tecla == '=') {
         fazerConta()
-    }
-
-    else if (tecla == '.') {
+    }else if (tecla == '.') {
         pontoTeclado = tecla
         ponto()
-    }
-
-    else if (tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
+    }else if (tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
         operadorTeclado = event.key
         guardarOperadorTeclado()
     }
 }
 
 
-// // OPERADOR DO TECLADO
+// OPERADOR DO TECLADO
 function guardarOperadorTeclado() {
     contarPontos = 0
     v1 = resultado.innerText
@@ -139,8 +127,6 @@ function apagar() {
 
 // FUNÇÃO DO PONTO
 function ponto() {
-    console.log(pontoClick)
-
 
     if (contarPontos >= 1) {
         return
