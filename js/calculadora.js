@@ -3,6 +3,8 @@ let operacao = document.querySelector('.btn-opr').addEventListener('click', guar
 let igual = document.querySelector('.igual').addEventListener('click', fazerConta)
 document.querySelector('.eraser').addEventListener('click', apagar)
 document.addEventListener('keydown', teclado)
+let oi = document.querySelector('.close').addEventListener('click', fechar)
+console.log(oi)
 
 
 
@@ -14,7 +16,6 @@ let operadorTeclado
 let apagador = ''
 let pontoTeclado
 let pontoClick
-
 
 // PEGAR OS VALORES DO TECLADO
 function teclado() {
@@ -172,3 +173,11 @@ function ponto() {
     }
 }
 
+
+
+function fechar(){
+    console.log('clicou')
+    alert('clicou')
+    // let alert = document.querySelector('pop-up')
+    // alert.style.display = "none"
+}
