@@ -2,27 +2,30 @@ let numClick = document.querySelector('.nums').addEventListener('click', guardar
 let operacao = document.querySelector('.btn-opr').addEventListener('click', guardarOperador)
 let igual = document.querySelector('.igual').addEventListener('click', fazerConta)
 document.querySelector('.eraser').addEventListener('click', apagar)
-document.querySelector('.ponto').addEventListener('click', ponto)
+// document.querySelector('.ponto').addEventListener('click', ponto)
 document.addEventListener('keydown', teclado)
 
 
 
-let contar_pontos = 0
+let contarPontos = 0
 let v1
 let v2
 let operador
 let apagador = ''
 let operadorTeclado
 let pontoTeclado
+let pontoClick
+
+
+
 
 
 // PEGAR OS VALORES DO TECLADO
 function teclado() {
     let tecla = event.key
-    apagador = tecla
+    let teclaNum = event.keyCode
 
-    if (tecla == '0' || tecla == '1' || tecla == '2' || tecla == '3' || tecla == '4' || tecla == '5' || tecla == '6'
-        || tecla == '7' || tecla == '8' || tecla == '9') {
+    if (teclaNum >= 48 && teclaNum <= 57) {
         resultado.innerText += tecla
     }
 
@@ -35,17 +38,12 @@ function teclado() {
         fazerConta()
     }
 
-    else if(tecla == '.'){
-        resultado.innerText += tecla
+    else if (tecla == '.') {
         pontoTeclado = tecla
-
-        if (contar_pontos > 1) {
-            event.preventDefault()
-        }
         ponto()
     }
 
-    else if(tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
+    else if (tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
         operadorTeclado = event.key
         guardarOperadorTeclado()
     }
@@ -54,22 +52,31 @@ function teclado() {
 
 // // OPERADOR DO TECLADO
 function guardarOperadorTeclado() {
-    contar_pontos = 0
+    contarPontos = 0
     v1 = resultado.innerText
     operador = operadorTeclado
     resultado.innerText = ''
 }
 
+
+
+
+
 // GUARDA O PRIMEIRO NÚMERO
 function guardarNumeros() {
     let clicado = event.target.innerText
-    resultado.innerHTML += clicado
-}
 
+    if (clicado != '.') {
+        resultado.innerHTML += clicado
+    } else if (clicado == '.') {
+        pontoClick = clicado
+        ponto()
+    }
+}
 
 // GUARDA O OPERADOR
 function guardarOperador(event) {
-    contar_pontos = 0
+    contarPontos = 0
     v1 = resultado.innerText
     let clicado = event.target.innerText
     operador = clicado
@@ -86,7 +93,7 @@ function guardar2() {
 
 // FAZ A CONTA
 function fazerConta() {
-    contar_pontos = 0
+    contarPontos = 0
     guardar2()
 
     if (operador == '+') {
@@ -118,10 +125,10 @@ function fazerConta() {
 // APAGA OS RESULTADOS
 function apagar() {
     let eraser = event.target.innerText
+    contarPontos = 0
 
     if (eraser == 'C' || apagador == 'Delete' || apagador == 'Escape') {
         resultado.innerText = ''
-        contar_pontos = 0
     } else {
         resultado.innerText = resultado.innerText.slice(0, -1)
     }
@@ -132,17 +139,23 @@ function apagar() {
 
 // FUNÇÃO DO PONTO
 function ponto() {
-    contar_pontos++
-    console.log('tela ' + resultado.innerText)
+    console.log(pontoClick)
 
 
-    if (event.target.innerText == '.' && resultado.innerText == '') {
-        resultado.innerHTML = '0'
+    if (contarPontos >= 1) {
+        return
+    } else {
+        contarPontos++
+
+        if (pontoTeclado == '.') {
+            resultado.innerText += pontoTeclado
+        } else if (pontoClick == '.') {
+            resultado.innerText += pontoClick
+        }
     }
-    else if(pontoTeclado == '.' && resultado.innerText == '.') {
-        resultado.innerHTML = '0.'
-    }
 
-  
+    if (resultado.innerText == '.') {
+        resultado.innerText = '0.'
+    }
 }
 
