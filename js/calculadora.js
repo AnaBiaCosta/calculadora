@@ -15,15 +15,15 @@ const popUp3 = document.querySelector('.pop-up-3')
 
 
 
-let contarPontos = 0
-let contarIgual = 0
-let v1
-let v2
-let operador
-let operadorTeclado
-let apagador = ''
-let pontoTeclado
-let pontoClick
+let contarPontos = 0,
+contarIgual = 0,
+v1,
+v2,
+operador,
+operadorTeclado,
+apagador = '',
+pontoTeclado,
+pontoClick
 
 
 
