@@ -16,6 +16,7 @@ const popUp3 = document.querySelector('.pop-up-3')
 
 
 let contarPontos = 0
+let contarIgual = 0
 let v1
 let v2
 let operador
@@ -36,8 +37,7 @@ function teclado() {
 
         if (resultado.innerText.length < 14) {
             resultado.innerText += tecla
-        }
-        else {
+        } else {
             popUp1.style.display = 'block'
             return
         }
@@ -46,7 +46,11 @@ function teclado() {
         apagador = tecla
         apagar()
     } else if (tecla == '=' || tecla == 'Enter') {
-        fazerConta()
+        if (v1 == undefined && v2 == undefined) {
+            return
+        } else {
+            fazerConta()
+        }
     } else if (tecla == '.') {
         pontoTeclado = tecla
         ponto()
@@ -103,59 +107,61 @@ function guardar2() {
 
 // FAZ A CONTA
 function fazerConta() {
+    contarIgual++
     contarPontos = 0
     let conta = 0
 
-
     guardar2()
 
-    if (operador == '+') {
-        conta = (Number(v1) + Number(v2))
-        resultado.innerHTML = conta
-    } else if (operador == '-') {
-        conta = (Number(v1) - Number(v2))
-        resultado.innerHTML = conta
-    } else if (operador == 'x' || operador == '*') {
-        conta = (Number(v1) * Number(v2))
-        resultado.innerHTML = conta
-    } else {
 
-        if (v1 == "0" && v2 == "0") {
-            resultado.innerText = 'Erro'
+    if(v1 == undefined && v2 == ''){
+        return
+    }else{
+        if (operador == '+') {
+            conta = (Number(v1) + Number(v2))
+            resultado.innerHTML = conta
+        } else if (operador == '-') {
+            conta = (Number(v1) - Number(v2))
+            resultado.innerHTML = conta
+        } else if (operador == 'x' || operador == '*') {
+            conta = (Number(v1) * Number(v2))
+            resultado.innerHTML = conta
         } else {
-            conta = (Number(v1) / Number(v2))
-
-            if (conta % 2 == 0 || conta % 3 == 0 || conta % 5 == 0 || conta % 7 == 0) {
-                resultado.innerHTML = conta
+            if (v1 == "0" && v2 == "0") {
+                resultado.innerText = 'Erro'
             } else {
-                resultado.innerHTML = conta.toFixed(2)
-            }
-
-            if (conta == 'Infinity') {
-                resultado.innerHTML = 'Erro'
-                popUp2.style.display = 'block'
+                conta = (Number(v1) / Number(v2))
+        
+                if (conta % 2 == 0 || conta % 3 == 0 || conta % 5 == 0 || conta % 7 == 0) {
+                    resultado.innerHTML = conta
+                } else {
+                    resultado.innerHTML = conta.toFixed(2)
+                }
+        
+                if (conta == 'Infinity') {
+                    resultado.innerHTML = 'Erro'
+                    popUp2.style.display = 'block'
+                }
             }
         }
+        
+        
+        let contaString = String(conta)
+        if (conta > 9007199254740991) {
+            resultado.innerHTML = 'Erro'
+        }
+        
+        if (contaString.length > 14) {
+            resultado.innerHTML = `${contaString.slice(0, -10)}e+`
+        }
     }
-
-
-    let contaString = String(conta)
-    if (conta > 9007199254740991) {
-        resultado.innerHTML = 'Erro'
-    }
-
-    if (contaString.length > 14) {
-        resultado.innerHTML = `${contaString.slice(0, -10)}e+`
-    }
-
-
-
 }
 
 
 // APAGA OS RESULTADOS
 function apagar() {
     let eraser = event.target.innerText
+    console.log(eraser)
     contarPontos = 0
 
     if (eraser == 'C' || apagador == 'Delete' || apagador == 'Escape') {
@@ -200,3 +206,27 @@ function fechar2() {
 function fechar3() {
     popUp3.style.display = 'none'
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
