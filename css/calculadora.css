@@ -165,7 +165,7 @@ main{
 
 
 
-.close{
+.close-style{
     text-align: right;
     cursor: pointer;
 }
@@ -179,9 +179,28 @@ main{
     font-size: 20px;
     text-align: center;
     position: fixed;
-    bottom: 65px;
     right: 25px;
 }
+
+.pop-up-1{
+    bottom: 65px;
+    display: none;
+}
+
+.pop-up-2{
+    bottom: 250px;
+    display: none;
+}
+
+.pop-up-3{
+    bottom: 445px;
+    display: none;
+}
+
+
+
+
+
 /* 
 #FFE2DF
 #FFD6DC

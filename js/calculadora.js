@@ -3,8 +3,15 @@ let operacao = document.querySelector('.btn-opr').addEventListener('click', guar
 let igual = document.querySelector('.igual').addEventListener('click', fazerConta)
 document.querySelector('.eraser').addEventListener('click', apagar)
 document.addEventListener('keydown', teclado)
-let oi = document.querySelector('.close').addEventListener('click', fechar)
-console.log(oi)
+document.querySelector('.close1').addEventListener('click', fechar1)
+document.querySelector('.close2').addEventListener('click', fechar2)
+document.querySelector('.close3').addEventListener('click', fechar3)
+
+
+const popUp1 = document.querySelector('.pop-up-1')
+const popUp2 = document.querySelector('.pop-up-2')
+const popUp3 = document.querySelector('.pop-up-3')
+
 
 
 
@@ -17,26 +24,28 @@ let apagador = ''
 let pontoTeclado
 let pontoClick
 
+
+
 // PEGAR OS VALORES DO TECLADO
 function teclado() {
     let tecla = event.key
     let teclaNum = event.keyCode
 
 
-
-    if (teclaNum >= 48 && teclaNum <= 57 && teclaNum != 56) {
+    if (tecla == '8' || teclaNum >= 48 && teclaNum <= 57 && teclaNum != 56) {
 
         if (resultado.innerText.length < 14) {
             resultado.innerText += tecla
         }
         else {
+            popUp1.style.display = 'block'
             return
         }
 
     } else if (tecla == 'Delete' || tecla == 'Backspace' || tecla == 'Escape') {
         apagador = tecla
         apagar()
-    } else if (tecla == '=') {
+    } else if (tecla == '=' || tecla == 'Enter') {
         fazerConta()
     } else if (tecla == '.') {
         pontoTeclado = tecla
@@ -58,8 +67,6 @@ function guardarOperadorTeclado() {
 
 
 
-
-
 // GUARDA O PRIMEIRO NÚMERO
 function guardarNumeros() {
     let clicado = event.target.innerText
@@ -68,6 +75,7 @@ function guardarNumeros() {
         if (resultado.innerText.length < 14) {
             resultado.innerHTML += clicado
         } else {
+            popUp1.style.display = 'block'
             return
         }
     } else if (clicado == '.') {
@@ -98,12 +106,12 @@ function fazerConta() {
     contarPontos = 0
     let conta = 0
 
-    
+
     guardar2()
 
     if (operador == '+') {
         conta = (Number(v1) + Number(v2))
-        resultado.innerHTML = `<marquee>${conta}</marquee>`
+        resultado.innerHTML = conta
     } else if (operador == '-') {
         conta = (Number(v1) - Number(v2))
         resultado.innerHTML = conta
@@ -111,25 +119,32 @@ function fazerConta() {
         conta = (Number(v1) * Number(v2))
         resultado.innerHTML = conta
     } else {
-        conta = (Number(v1) / Number(v2))
-        resultado.innerHTML = conta.toFixed(1)
 
-        if (conta == 'Infinity') {
-            resultado.innerHTML = 'Erro'
+        if (v1 == "0" && v2 == "0") {
+            resultado.innerText = 'Erro'
+        } else {
+            conta = (Number(v1) / Number(v2))
+
+            if (conta % 2 == 0 || conta % 3 == 0 || conta % 5 == 0 || conta % 7 == 0) {
+                resultado.innerHTML = conta
+            } else {
+                resultado.innerHTML = conta.toFixed(2)
+            }
+
+            if (conta == 'Infinity') {
+                resultado.innerHTML = 'Erro'
+                popUp2.style.display = 'block'
+            }
         }
     }
 
+
     let contaString = String(conta)
-
-    console.log(contaString)
-
-
     if (conta > 9007199254740991) {
         resultado.innerHTML = 'Erro'
     }
 
     if (contaString.length > 14) {
-        console.log('cheguei')
         resultado.innerHTML = `${contaString.slice(0, -10)}e+`
     }
 
@@ -157,6 +172,7 @@ function apagar() {
 function ponto() {
 
     if (contarPontos >= 1) {
+        popUp3.style.display = 'block'
         return
     } else {
         contarPontos++
@@ -175,9 +191,12 @@ function ponto() {
 
 
 
-function fechar(){
-    console.log('clicou')
-    alert('clicou')
-    // let alert = document.querySelector('pop-up')
-    // alert.style.display = "none"
+function fechar1() {
+    popUp1.style.display = 'none'
+}
+function fechar2() {
+    popUp2.style.display = 'none'
+}
+function fechar3() {
+    popUp3.style.display = 'none'
 }
