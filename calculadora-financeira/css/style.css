@@ -1,32 +1,94 @@
 body{
-    background-image: url("../img/blank-composition-data-373076.jpg");
+    background-color: rgb(247, 247, 235); 
+    background-image: url("../img/bg-oficial.jpg");
+    background-repeat: no-repeat;
     background-size: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 220px;
 }
-
 
 h1{
     text-align: center;
-    font-size: 60px;
-    color:white;
-    text-shadow: 10px 3px 5px black
+    color:  rgb(50, 40, 50) ;
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+.sub-title{
+    font-size: 20px;
+}
+
+header{
+    margin-bottom: 60px;
+    text-align: center;
 }
 
 
-.calc-container{
-    border: 2px solid red;
-    position: fixed;
-    left: 200px;
+main{
     display: flex;
-    flex-wrap: wrap;
-    width: 40%;
-    bottom: 500px;
+    justify-content: center;
+    color: rgb(247, 247, 235);
+    font-size: 25px
+}
+
+
+.teclas-container{
+    display: grid;
+    grid-template-columns: 70px 70px 70px 70px 70px 70px 70px 70px 70px 70px;
+    grid-template-rows: 70px 70px 70px 70px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.calc-container{
+    border: 2px solid rgb(247, 247, 235);
+    border-radius: 20px;
+    width: 790px;
+    padding: 20px;
+    background: #2C0B2A;
 }
 
 .display{
-    width: 100%;
-
+    border: 2px solid rgb(247, 247, 235);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 20px;
+    color: rgb(50, 40, 50);
+    background: rgb(247, 247, 235);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    font-size: 35px
 }
 
 
-/* pilha, fila, árvore e lista */
+.tecla{
+    border: 2px solid rgb(247, 247, 235);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 70px;
+    box-shadow: 1px 1px 1px rgb(247, 247, 235);
+    cursor: pointer;
+}
+
+.tecla:hover{
+    background: #4E0250
+}
+
+
+.enter{
+    grid-column: 6;
+    grid-row: 3 / 5;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
