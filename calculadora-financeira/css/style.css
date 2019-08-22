@@ -59,7 +59,8 @@ main{
     background: rgb(247, 247, 235);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: right;
-    font-size: 35px
+    font-size: 35px;
+    height: 40px;
 }
 
 
