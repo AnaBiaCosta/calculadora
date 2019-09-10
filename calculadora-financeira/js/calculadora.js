@@ -26,16 +26,16 @@ let contarPontos = 0, operador = '', mais, menos, vezes, dividir
 
 
 //CLASSE DA PILHA
-class pilha{
-    constructor(){
+class pilha {
+    constructor() {
         this.stack = []
     }
 
-    push(numero){
+    push(numero) {
         this.stack.push(numero)
     }
 
-    pop(){
+    pop() {
         return this.stack.pop()
     }
 }
@@ -78,26 +78,25 @@ function fazerConta() {
     let valor2 = display.innerText
 
 
-    // if (novoNumero.length ==  undefined) {
-    //     console.log('cheguei')
-    //     return
-    // } else {
+    if (novoNumero.stack.length == 0) {
+        return
+    } else {
         if (ops == '+') {
             mais++
             conta = Number(valor1) + Number(valor2)
-        }else if(ops == '-'){
+        } else if (ops == '-') {
             menos++
             conta = Number(valor1) - Number(valor2)
-        }else if(ops == '*'){
+        } else if (ops == '*') {
             vezes++
             conta = Number(valor1) * Number(valor2)
-        }else if(ops == '÷'){
+        } else if (ops == '÷') {
             dividir++
             conta = Number(valor1) / Number(valor2)
         }
         display.innerText = conta
     }
-// }
+}
 
 
 
