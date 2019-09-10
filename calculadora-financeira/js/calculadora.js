@@ -1,81 +1,108 @@
 // TELA
 let display = document.querySelector('.display')
 
-
 //APAGAR
 document.querySelector('.eraser').addEventListener('click', apagar)
 
-
 //PONTO
 document.querySelector('.ponto').addEventListener('click', ponto)
-
 
 // NÚMEROS
 let nums = Array.from(document.querySelectorAll('.nums'))
 nums.map(numero => numero.addEventListener('click', exibirNumero))
 
-
-
 // ENTER
 let enter = Array.from(document.querySelectorAll('.enter'))
 enter.map(et => et.addEventListener('click', guardarNumero))
 
-
-
 // OPERADORES BÁSICOS
-let operador = Array.from(document.querySelectorAll('.basic-ops'))
-operador.map(numero => numero.addEventListener('click', fazerConta))
+let operadorClicado = Array.from(document.querySelectorAll('.basic-ops'))
+operadorClicado.map(numero => numero.addEventListener('click', fazerConta))
+
+// DECLARAÇÃO DAS VARIÁVEIS
+let contarPontos = 0, operador = '', mais, menos, vezes, dividir
 
 
 
-let v1, v2, contarPontos = 0
+
+//CLASSE DA PILHA
+class pilha{
+    constructor(){
+        this.stack = []
+    }
+
+    push(numero){
+        this.stack.push(numero)
+    }
+
+    pop(){
+        return this.stack.pop()
+    }
+}
 
 
-function exibirNumero(){
+
+// FUNÇÃO PARA EXIBIR NÚMEROS NO DISPLAY
+function exibirNumero() {
     let numero = event.target.innerText
-    
-    if(display.innerText.length < 20){
+
+    if (display.innerText.length < 20) {
         display.innerText += numero
-    }else{
-        console.log('eai')
+    } else {
         return
     }
 }
 
-function guardarNumero(){
-    v1 = display.innerText
+
+
+let novoNumero = new pilha()
+
+
+// FUNÇÃO PARA GUARDAR OS NÚMEROS NUM ARRAY - ACIONADA PELO ENTER
+function guardarNumero() {
+    novoNumero.push(display.innerText)
     display.innerText = ''
     contarPontos = 0
+
+    // console.log(novoNumero.length)
 }
 
-function guardarSegundoValor(){
-    v2 = display.innerText
-}
 
 
-function fazerConta(){
+
+//FUNÇÃO QUE FAZ A CONTA - ACIONADA PELO OPERADOR
+function fazerConta() {
     let ops = event.target.innerText
+    let conta = 0
+    let valor1 = novoNumero.pop()
+    let valor2 = display.innerText
 
-    guardarSegundoValor()
-    
-    if(ops == '+'){
-        let conta = (Number(v1) + Number(v2))
-        display.innerText = conta
-    }else if(ops == '-'){
-        let conta = (Number(v1) - Number(v2))
-        display.innerText = conta
-    }else if(ops == 'x'){
-        let conta = (Number(v1) * Number(v2))
-        display.innerText = conta
-    }else if(ops == '÷'){
-        let conta = (Number(v1) / Number(v2))
+
+    // if (novoNumero.length ==  undefined) {
+    //     console.log('cheguei')
+    //     return
+    // } else {
+        if (ops == '+') {
+            mais++
+            conta = Number(valor1) + Number(valor2)
+        }else if(ops == '-'){
+            menos++
+            conta = Number(valor1) - Number(valor2)
+        }else if(ops == '*'){
+            vezes++
+            conta = Number(valor1) * Number(valor2)
+        }else if(ops == '÷'){
+            dividir++
+            conta = Number(valor1) / Number(valor2)
+        }
         display.innerText = conta
     }
-}
+// }
 
 
 
-function apagar(){
+
+function apagar() {
     display.innerText = ''
     contarPontos = 0
 }
@@ -86,15 +113,22 @@ function apagar(){
 function ponto() {
     let ponto = event.target.innerText
 
-    if(contarPontos >= 1 ){
+    if (contarPontos >= 1) {
         return
-    }else{
+    } else {
         contarPontos++
         display.innerText += ponto
-    
 
-        if(display.innerText == '.'){
+
+        if (display.innerText == '.') {
             display.innerText = '0.'
         }
     }
 }
+
+
+
+
+
+
+
