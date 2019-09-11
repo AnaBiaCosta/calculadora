@@ -1,31 +1,17 @@
-// TELA
 let display = document.querySelector('.display')
-
-//APAGAR
 document.querySelector('.eraser').addEventListener('click', apagar)
-
-//PONTO
 document.querySelector('.ponto').addEventListener('click', ponto)
-
-// NÚMEROS
 let nums = Array.from(document.querySelectorAll('.nums'))
 nums.map(numero => numero.addEventListener('click', exibirNumero))
-
-// ENTER
+document.addEventListener('keydown', teclado)
 let enter = Array.from(document.querySelectorAll('.enter'))
 enter.map(et => et.addEventListener('click', guardarNumero))
-
-// OPERADORES BÁSICOS
 let operadorClicado = Array.from(document.querySelectorAll('.basic-ops'))
 operadorClicado.map(numero => numero.addEventListener('click', fazerConta))
-
-// DECLARAÇÃO DAS VARIÁVEIS
-let contarPontos = 0, operador = '', mais, menos, vezes, dividir
+let contarPontos = 0, operador = '', valor1, valor2, operadorTeclado, pontoTeclado
 
 
 
-
-//CLASSE DA PILHA
 class pilha {
     constructor() {
         this.stack = []
@@ -38,11 +24,14 @@ class pilha {
     pop() {
         return this.stack.pop()
     }
+
+    isEmpty() {
+        return this.stack.length === 0
+    }
 }
 
+let novoNumero = new pilha()
 
-
-// FUNÇÃO PARA EXIBIR NÚMEROS NO DISPLAY
 function exibirNumero() {
     let numero = event.target.innerText
 
@@ -53,77 +42,86 @@ function exibirNumero() {
     }
 }
 
+function teclado() {
+    let tecla = event.key
+    let teclaNum = event.keyCode
 
+    if (tecla == '8' || teclaNum >= 48 && teclaNum <= 57 && teclaNum != 56) {
+        if (display.innerText.length < 20) {
+            display.innerText += tecla
+        } else {
+            return
+        }
+    } else if (tecla == '=' || tecla == 'Enter') {
+        guardarNumero()
+    } else if (tecla == '+' || tecla == '-' || tecla == '*' || tecla == '/') {
+        operadorTeclado = event.key
+        fazerConta()
+    } else if (tecla == '.') {
+        pontoTeclado = tecla
+        ponto()
+    }
+}
 
-let novoNumero = new pilha()
-
-
-// FUNÇÃO PARA GUARDAR OS NÚMEROS NUM ARRAY - ACIONADA PELO ENTER
 function guardarNumero() {
     novoNumero.push(display.innerText)
     display.innerText = ''
     contarPontos = 0
-
-    // console.log(novoNumero.length)
 }
 
-
-
-
-//FUNÇÃO QUE FAZ A CONTA - ACIONADA PELO OPERADOR
 function fazerConta() {
     let ops = event.target.innerText
     let conta = 0
-    let valor1 = novoNumero.pop()
-    let valor2 = display.innerText
 
-
-    if (novoNumero.stack.length == 0) {
+    if (novoNumero.isEmpty()) {
         return
-    } else {
-        if (ops == '+') {
-            mais++
-            conta = Number(valor1) + Number(valor2)
-        } else if (ops == '-') {
-            menos++
-            conta = Number(valor1) - Number(valor2)
-        } else if (ops == '*') {
-            vezes++
-            conta = Number(valor1) * Number(valor2)
-        } else if (ops == '÷') {
-            dividir++
+    }
+
+    valor1 = novoNumero.pop()
+    valor2 = display.innerText
+
+    if (ops == '+' || operadorTeclado == '+') {
+        conta = Number(valor1) + Number(valor2)
+    } else if (ops == '-' || operadorTeclado == '-') {
+        conta = Number(valor1) - Number(valor2)
+    } else if (ops == 'x' || operadorTeclado == '*') {
+        conta = Number(valor1) * Number(valor2)
+    } else if (ops == '÷' || operadorTeclado == '/') {
+        if(valor1 == 0 || valor2 == 0){
+            display.innerText = 'error'
+            return
+        }else{
             conta = Number(valor1) / Number(valor2)
         }
-        display.innerText = conta
     }
+    display.innerText = conta
 }
-
-
-
 
 function apagar() {
     display.innerText = ''
     contarPontos = 0
 }
 
-
-
-
 function ponto() {
-    let ponto = event.target.innerText
+    let pontoClick = event.target.innerText
 
     if (contarPontos >= 1) {
         return
     } else {
         contarPontos++
-        display.innerText += ponto
 
-
-        if (display.innerText == '.') {
-            display.innerText = '0.'
+        if (pontoTeclado == '.') {
+            display.innerText += pontoTeclado
+        } else if (pontoClick == '.') {
+            display.innerText += pontoClick
         }
     }
+
+    if (display.innerText == '.') {
+        display.innerText = '0.'
+    }
 }
+
 
 
 
