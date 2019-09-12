@@ -8,7 +8,7 @@ let enter = Array.from(document.querySelectorAll('.enter'))
 enter.map(et => et.addEventListener('click', guardarNumero))
 let operadorClicado = Array.from(document.querySelectorAll('.basic-ops'))
 operadorClicado.map(numero => numero.addEventListener('click', fazerConta))
-let contarPontos = 0, operador = '', valor1, valor2, operadorTeclado, pontoTeclado
+let contarPontos = 0, operador = '', valor1, valor2, operadorTeclado, pontoTeclado, contarEntra =0, n
 
 
 
@@ -35,11 +35,17 @@ let novoNumero = new pilha()
 function exibirNumero() {
     let numero = event.target.innerText
 
+    if(contarEntra >=1){
+        display.innerText = ''
+        contarEntra = 0
+    }
+
     if (display.innerText.length < 20) {
         display.innerText += numero
     } else {
         return
     }
+
 }
 
 function teclado() {
@@ -65,13 +71,15 @@ function teclado() {
 
 function guardarNumero() {
     novoNumero.push(display.innerText)
-    display.innerText = ''
+    contarEntra++
+    console.log(novoNumero)
     contarPontos = 0
 }
 
 function fazerConta() {
     let ops = event.target.innerText
     let conta = 0
+    contarEntra = 0
 
     if (novoNumero.isEmpty()) {
         return
