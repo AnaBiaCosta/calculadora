@@ -103,6 +103,10 @@ function fazerConta() {
         }
     } else if (ops == '%') {
         conta = (valor1 * valor2) / 100
+    }else if (ops == '1/X'){
+        contaDouble = 1/ valor2
+        conta = contaDouble.toFixed(2)
+        console.log('eai')
     }
 
 
