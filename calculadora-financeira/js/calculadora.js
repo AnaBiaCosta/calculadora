@@ -107,6 +107,8 @@ function fazerConta() {
         contaDouble = 1/ valor2
         conta = contaDouble.toFixed(2)
         console.log('eai')
+    }else if (ops == 'Y^x'){
+        conta = Math.pow(valor1, valor2)
     }
 
 
