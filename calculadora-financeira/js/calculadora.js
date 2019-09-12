@@ -8,7 +8,7 @@ let enter = Array.from(document.querySelectorAll('.enter'))
 enter.map(et => et.addEventListener('click', guardarNumero))
 let operadorClicado = Array.from(document.querySelectorAll('.basic-ops'))
 operadorClicado.map(numero => numero.addEventListener('click', fazerConta))
-let contarPontos = 0, operador = '', valor1, valor2, operadorTeclado, pontoTeclado, contarEntra =0, n
+let contarPontos = 0, operador = '', valor1, valor2, operadorTeclado, pontoTeclado, contarEntra = 0, n
 
 
 
@@ -35,7 +35,7 @@ let novoNumero = new pilha()
 function exibirNumero() {
     let numero = event.target.innerText
 
-    if(contarEntra >=1){
+    if (contarEntra >= 1) {
         display.innerText = ''
         contarEntra = 0
     }
@@ -95,13 +95,19 @@ function fazerConta() {
     } else if (ops == 'x' || operadorTeclado == '*') {
         conta = Number(valor1) * Number(valor2)
     } else if (ops == '÷' || operadorTeclado == '/') {
-        if(valor1 == 0 || valor2 == 0){
+        if (valor1 == 0 || valor2 == 0) {
             display.innerText = 'error'
             return
-        }else{
+        } else {
             conta = Number(valor1) / Number(valor2)
         }
+    } else if (ops == '%') {
+        conta = (valor1 * valor2) / 100
     }
+
+
+
+
     display.innerText = conta
 }
 
