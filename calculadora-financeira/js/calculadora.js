@@ -71,6 +71,11 @@ function teclado() {
 
 function guardarNumero() {
     novoNumero.push(display.innerText)
+
+    if(display.innerText.indexOf('.') == -1){
+        display.innerText += ".00"
+    }
+
     contarEntra++
     console.log(novoNumero)
     contarPontos = 0
@@ -106,13 +111,9 @@ function fazerConta() {
     }else if (ops == '1/X'){
         contaDouble = 1/ valor2
         conta = contaDouble.toFixed(2)
-        console.log('eai')
     }else if (ops == 'Y^x'){
         conta = Math.pow(valor1, valor2)
     }
-
-
-
 
     display.innerText = conta
 }
