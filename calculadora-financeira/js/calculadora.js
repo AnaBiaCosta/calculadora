@@ -77,7 +77,6 @@ function guardarNumero() {
     }
 
     contarEntra++
-    console.log(novoNumero)
     contarPontos = 0
 }
 
@@ -86,25 +85,27 @@ function fazerConta() {
     let conta = 0
     contarEntra = 0
 
+
     if (novoNumero.isEmpty()) {
+        console.log('se eu cair aqui aviso')
         return
     }
 
-    valor1 = novoNumero.pop()
-    valor2 = display.innerText
+    valor1 = Number(novoNumero.pop())
+    valor2 = Number(display.innerText)
 
     if (ops == '+' || operadorTeclado == '+') {
-        conta = Number(valor1) + Number(valor2)
+        conta = valor1 + valor2
     } else if (ops == '-' || operadorTeclado == '-') {
-        conta = Number(valor1) - Number(valor2)
+        conta = valor1 - valor2
     } else if (ops == 'x' || operadorTeclado == '*') {
-        conta = Number(valor1) * Number(valor2)
+        conta = valor1 * valor2
     } else if (ops == '÷' || operadorTeclado == '/') {
         if (valor1 == 0 || valor2 == 0) {
             display.innerText = 'error'
             return
         } else {
-            conta = Number(valor1) / Number(valor2)
+            conta = valor1 / valor2
         }
     } else if (ops == '%') {
         conta = (valor1 * valor2) / 100
@@ -115,7 +116,17 @@ function fazerConta() {
         conta = Math.pow(valor1, valor2)
     }
 
+
+    if(conta.toString().indexOf('.') == -1){
+        conta += ".00"
+    }
+
     display.innerText = conta
+    contarEntra++
+
+    if(novoNumero.stack.length == 0){
+        novoNumero.push(display.innerText)
+    }
 }
 
 function apagar() {
